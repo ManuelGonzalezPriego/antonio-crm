@@ -15,5 +15,5 @@ export const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
-export const URL_BASE = 'http://desarrollo.radfpd.es';
+export const URL_BASE = 'http://158.179.220.12/app.radfpd.es';
 export const URL_API = `${URL_BASE}/api/private`;
