@@ -10,9 +10,9 @@ require_once('api_utils.php');
 class Conexion {
 
     const DB_HOST = 'localhost';
-    const DB_USERNAME = '';
+    const DB_USERNAME = 'manolo';
     const DB_PASSWORD = ''; 
-    const DB_NAME = '';
+    const DB_NAME = 'app_radfpd';
     const DB_PORT = '3306';
 
     const URL = '';
