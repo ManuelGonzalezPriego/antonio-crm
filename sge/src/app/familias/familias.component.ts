@@ -31,10 +31,15 @@ export class FamiliasComponent implements OnInit {
   idFamiliaFilter = new FormControl();
   familiaFilter = new FormControl();
 
+  //Creamos el form control
+  codigoFamilia = new FormControl();
+
   permises: Permises;
 
   displayedColumns: string[];
-  private filterValues = { id_familia: '', familia: '' };
+
+  //Creamos el apartado cod familia en el filtro
+  private filterValues = { id_familia: '', familia: '', cod_familia: '' };
 
   constructor(
     public dialog: MatDialog,
@@ -46,20 +51,21 @@ export class FamiliasComponent implements OnInit {
     this.getFamilias();
   }
 
-  
+
   async getFamilias() {
     const RESPONSE = await this.familiasService.getAllFamilias().toPromise();
     this.permises = RESPONSE.permises;
 
     if (RESPONSE.ok) {
       this.familiasService.familia = RESPONSE.data as Familia[];
-      this.displayedColumns = ['id_familia', 'familia', 'actions'];
+      //Agregamos el displayed colims
+      this.displayedColumns = ['id_familia', 'familia', 'cod_familia', 'actions'];
       this.dataSource.data = this.familiasService.familia;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createFilter();
       this.onChanges();
-    }  
+    }
   }
 
   async addFamilia() {
@@ -67,11 +73,12 @@ export class FamiliasComponent implements OnInit {
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
       if (RESULT.ok) {
-        //this.familiasService.familia.push(RESULT.data);
-        //this.dataSource.data = this.familiasService.familia;
+        //Descomentamos las lineas comentados
+        this.familiasService.familia.push(RESULT.data);
+        this.dataSource.data = this.familiasService.familia;
         this.ngOnInit();
       }
-    }  
+    }
   }
 
   async editFamilia(familia: Familia) {
@@ -79,11 +86,12 @@ export class FamiliasComponent implements OnInit {
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
       if (RESULT.ok) {
-        //this.familiasService.editFamilia(RESULT.data);
-        //this.dataSource.data = this.familiasService.familia;
+        //Descomentamos las lineas comentados
+        this.familiasService.editFamilia(RESULT.data);
+        this.dataSource.data = this.familiasService.familia;
         this.ngOnInit();
       }
-    }  
+    }
   }
 
   async deleteFamilia(familia: Familia) {
@@ -91,8 +99,9 @@ export class FamiliasComponent implements OnInit {
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
       if (RESULT.ok) {
-        //this.familiasService.deleteFamilia(RESULT.data);
-        //this.dataSource.data = this.familiasService.familia;
+        //Descomentamos las lineas comentados
+        this.familiasService.deleteFamilia(RESULT.data);
+        this.dataSource.data = this.familiasService.familia;
         this.ngOnInit();
       }
     }
@@ -103,7 +112,8 @@ export class FamiliasComponent implements OnInit {
       const searchTerms = JSON.parse(filter);
 
       return familia.id_familia.toString().indexOf(searchTerms.id_familia) !== -1
-        && familia.familia.toLowerCase().indexOf(searchTerms.familia.toLowerCase()) !== -1;
+        && familia.familia.toLowerCase().indexOf(searchTerms.familia.toLowerCase()) !== -1
+        && familia.cod_familia.toLowerCase().indexOf(searchTerms.cod_familia.toLowerCase()) !== -1;
     };
 
     return filterFunction;
@@ -120,7 +130,13 @@ export class FamiliasComponent implements OnInit {
     .subscribe(value => {
         this.filterValues.familia = value;
         this.dataSource.filter = JSON.stringify(this.filterValues);
-    });      
+    });
+
+    this.codigoFamilia.valueChanges
+    .subscribe(value => {
+        this.filterValues.cod_familia = value;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
   }
 
 }

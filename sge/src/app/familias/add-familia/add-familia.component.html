@@ -15,6 +15,13 @@
             </mat-form-field>
         </div>
 
+        <!-- Agragamos al formulario el apartado de cod familia -->
+        <div class="form">
+            <mat-form-field color="accent">
+                <textarea matInput placeholder="Cod-Familia" formControlName="cod-familia" name="cod-familia"></textarea>
+            </mat-form-field>
+        </div>
+
         <div mat-dialog-actions>
             <button mat-button id="onSubmit" type="submit" [disabled]="!familiaForm.valid" (click)="confirmAdd()">Guardar</button>
             <button mat-button id="onNoClick" (click)="onNoClick()" tabindex="-1">Cancelar</button>
