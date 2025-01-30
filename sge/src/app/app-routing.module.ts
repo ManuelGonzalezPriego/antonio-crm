@@ -57,6 +57,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'home'
   },
+  { path: 'unidades-centro', loadChildren: () => import('./entidades/datos-entidad/unidades-centro/unidades-centro.module').then(m => m.UnidadesCentroModule) },
   { path: 'motivos-reunion', loadChildren: () => import('./motivos-reunion/motivos-reunion.module').then(m => m.MotivosReunionModule) },
   { path: 'modos-reunion', loadChildren: () => import('./modos-reunion/modos-reunion.module').then(m => m.ModosReunionModule) },
   { path: 'zonas', loadChildren: () => import('./zonas/zonas.module').then(m => m.ZonasModule) },

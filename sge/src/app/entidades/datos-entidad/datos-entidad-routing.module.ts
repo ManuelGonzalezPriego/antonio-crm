@@ -4,25 +4,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { DatosEntidadComponent } from './datos-entidad.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: DatosEntidadComponent,
     redirectTo: 'datos-entidad-reunion'
   },
-  { 
-    path: 'datos-basicos-entidad', 
+  {
+    path: 'datos-basicos-entidad',
     loadChildren: () => import('./datos-basicos-entidad/datos-basicos-entidad.module').then(m => m.DatosBasicosEntidadModule),
-    outlet: 'sidebar' 
+    outlet: 'sidebar'
   },
-  { 
-    path: 'contactos-entidad', 
+  {
+    path: 'contactos-entidad',
     loadChildren: () => import('./contactos-entidad/contactos-entidad.module').then(m => m.ContactosEntidadModule),
-    outlet: 'sidebar' 
+    outlet: 'sidebar'
   },
-  { 
-    path: 'unidades', 
+  {
+    path: 'unidades',
     loadChildren: () => import('./unidades/unidades.module').then(m => m.UnidadesModule),
-    outlet: 'sidebar' 
+    outlet: 'sidebar'
   },];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
