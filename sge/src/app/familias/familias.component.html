@@ -20,7 +20,7 @@
 
             <ng-container matColumnDef="cod_familia">
                 <th mat-header-cell *matHeaderCellDef>
-                    <input matInput [formControl]="familiaFilter" placeholder="Cod_familia">
+                    <input matInput [formControl]="codigoFamilia" placeholder="Cod_familia">
                     <span mat-sort-header></span>
                 </th>
                 <td mat-cell *matCellDef="let familias"> {{familias.cod_familia}} </td>
@@ -35,7 +35,7 @@
 			</button>
                 </th>
                 <td mat-cell *matCellDef="let familias">
-                    <button mat-icon-button (click)="editFamilia(familias)">
+                  <button mat-icon-button (click)="editFamilia(familias)">
 			  <mat-icon>
 				mode_edit
 			  </mat-icon>
