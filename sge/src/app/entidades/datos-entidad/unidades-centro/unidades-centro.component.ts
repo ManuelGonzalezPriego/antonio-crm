@@ -32,7 +32,6 @@ export class UnidadesCentroComponent implements OnInit {
   unidadCentro = new FormControl();
   idCiclo = new FormControl();
   observaciones = new FormControl();
-  entidad: Entidad;
 
   permises: Permises;
 
@@ -44,34 +43,32 @@ export class UnidadesCentroComponent implements OnInit {
     private unidadesService: UnidadesCentroService,
     private overlay: Overlay,
 
-    public entidadService: EntidadesService
   ) { }
 
   ngOnInit(): void {
-    this.entidad = this.entidadService.entidad;
-    this.getUnidadesCentro(this.entidad);
+    this.getUnidadesCentro();
     this.createFilter();
     this.onChanges();
   }
 
 
-  async getUnidadesCentro(entidad: Entidad) {
-    const RESPONSE = await this.unidadesService.getUnidadesCentro(entidad.id_entidad).toPromise();
+  async getUnidadesCentro() {
+    const RESPONSE = await this.unidadesService.get().toPromise();
     this.permises = RESPONSE.permises;
 
     if (RESPONSE.ok) {
+      this.permises = RESPONSE.permises;
       this.unidadesService.unidadCentro = RESPONSE.data as UnidadCentro[];
       this.displayedColumns = ['id_unidad_centro', 'unidad_centro', 'id_ciclo', 'observaciones'];
       this.dataSource.data = this.unidadesService.unidadCentro;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createFilter();
-      this.onChanges();
     }
   }
 
-  async addUnidadCentro(idEntidad: number) {
-    const dialogRef = this.dialog.open(AddUnidadComponent, { data: idEntidad, scrollStrategy: this.overlay.scrollStrategies.noop() });
+  async addUnidadCentro() {
+    const dialogRef = this.dialog.open(AddUnidadComponent, { scrollStrategy: this.overlay.scrollStrategies.noop() });
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
       if (RESULT.ok) {

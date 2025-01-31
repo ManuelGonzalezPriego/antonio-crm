@@ -1,5 +1,4 @@
 <div class="container ">
-    <h3 mat-dialog-title>Ciclos de {{entidad.entidad}}</h3>
     <div class="example-container mat-elevation-z8">
         <div class="example-table-container">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
@@ -38,7 +37,7 @@
 
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>
-                        <button mat-icon-button (click)="addUnidadCentro(entidad.id_entidad)">
+                        <button mat-icon-button (click)="addUnidadCentro()">
                             <mat-icon>
                                 add_circle
                             </mat-icon>
