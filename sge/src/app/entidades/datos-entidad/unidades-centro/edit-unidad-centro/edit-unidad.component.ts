@@ -11,6 +11,8 @@ import { UnidadDual } from 'src/app/shared/interfaces/unidad-dual';
 import { UnidadesDualService } from 'src/app/services/unidades-dual.service';
 import { MotivoNodual } from 'src/app/shared/interfaces/motivo-nodual';
 import { MotivosNodualService } from 'src/app/services/motivos-nodual.service';
+import { UnidadCentro } from 'src/app/shared/interfaces/unidad-centro';
+import { UnidadesCentroService } from 'src/app/services/unidades-centro.service';
 
 @Component({
   selector: 'app-edit-unidad',
@@ -20,9 +22,7 @@ import { MotivosNodualService } from 'src/app/services/motivos-nodual.service';
 export class EditUnidadComponent implements OnInit {
 
   unidadForm: FormGroup;
-  ciclos: Ciclo[];
-  unidades_dual: UnidadDual[];
-  motivos_nodual: MotivoNodual[];
+  ciclos: UnidadCentro[];
 
   // Para autocompletar...
   //familias: any[]
@@ -36,11 +36,8 @@ export class EditUnidadComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditUnidadComponent>,
     private snackBar: MatSnackBar,
-    private servicioUnidades: UnidadesService,
-    @Inject(MAT_DIALOG_DATA) public unidad: Unidad,
-    private servicioCiclos: CiclosService,
-    private servicioUnidadesDual: UnidadesDualService,
-    private servicioMotivosNodual: MotivosNodualService,
+    private servicioUnidades: UnidadesCentroService,
+    @Inject(MAT_DIALOG_DATA) public unidad: UnidadCentro,
 
   ) { }
 
@@ -52,21 +49,11 @@ export class EditUnidadComponent implements OnInit {
   setForm() {
     this.ENTIDAD = ENTIDAD_UNIDAD;
     this.unidadForm = new FormGroup({
-      id_unidad: new FormControl(this.unidad.id_unidad, Validators.required),
-      id_entidad: new FormControl(this.unidad.id_entidad, Validators.required),
+      unidad_centro: new FormControl(this.unidad.unidad_centro),
       id_ciclo: new FormControl(this.unidad.id_ciclo, Validators.required),
-      unidad: new FormControl(this.unidad.unidad, Validators.required),
-      plazas: new FormControl(this.unidad.plazas, Validators.required),
-      id_unidad_dual: new FormControl(this.unidad.id_unidad_dual, Validators.required),
-      id_motivo_nodual: new FormControl(this.unidad.id_motivo_nodual),
-      observaciones: new FormControl(null)
+      observaciones: new FormControl(this.unidad.observaciones),
+      id_unidad_centro: new FormControl(this.unidad.id_unidad_centro)
     });
-
-    this.unidadDual(this.unidad.id_unidad_dual);
-
-    this.getCiclos();
-    this.getUnidadesDual();
-    this.getMotivosNodual(this.unidad.id_entidad);
   }
 
   async confirmEdit(){
@@ -74,45 +61,19 @@ export class EditUnidadComponent implements OnInit {
     if (this.unidadForm.valid) {
       const unidadForm = this.unidadForm.value;
 
-      const RESPONSE = await this.servicioUnidades.editUnidad(unidadForm).toPromise();
+      const RESPONSE = await this.servicioUnidades.editUnidadCentro(unidadForm).toPromise();
       if (RESPONSE.ok) {
         this.snackBar.open(RESPONSE.message, CLOSE, { duration: 5000 });
         this.dialogRef.close({ ok: RESPONSE.ok, data: RESPONSE.data });
-      } else { 
-        this.snackBar.open(RESPONSE.message, CLOSE, { duration: 5000 }); 
+      } else {
+        this.snackBar.open(RESPONSE.message, CLOSE, { duration: 5000 });
       }
-    } else { 
-      this.snackBar.open(ERROR, CLOSE, { duration: 5000 }); 
+    } else {
+      this.snackBar.open(ERROR, CLOSE, { duration: 5000 });
     }
   }
 
-  async getCiclos(){
-    const RESPONSE = await this.servicioCiclos.getAllCiclos().toPromise();
-    if (RESPONSE.ok){
-      this.ciclos = RESPONSE.data as Ciclo[];
-    }
-  }
-
-  async getUnidadesDual(){
-    const RESPONSE = await this.servicioUnidadesDual.getAllUnidadesDual().toPromise();
-    if (RESPONSE.ok){
-      this.unidades_dual = RESPONSE.data as UnidadDual[];
-    }
-  }
-
-  async getMotivosNodual(idEntidad: number){
-    const RESPONSE = await this.servicioMotivosNodual.get(idEntidad).toPromise();
-    if (RESPONSE.ok){
-      this.motivos_nodual = RESPONSE.data as MotivoNodual[];
-    }
-  }
-  
   onNoClick() {
     this.dialogRef.close({ ok: false });
-  }
-
-  async unidadDual(ud: number) {
-    this.esDual = (ud > 1);
-    console.log(this.esDual);
   }
 }

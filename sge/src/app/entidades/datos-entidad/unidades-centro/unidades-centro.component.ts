@@ -11,8 +11,6 @@ import { Permises } from 'src/app/shared/interfaces/api-response';
 import { AddUnidadComponent } from './add-unidad-centro/add-unidad.component';
 import { EditUnidadComponent } from './edit-unidad-centro/edit-unidad.component';
 import { DeleteUnidadComponent } from './delete-unidad-centro/delete-unidad.component';
-import { Entidad } from '../../../shared/interfaces/entidad';
-import { EntidadesService } from '../../../services/entidades.service';
 import { UnidadCentro } from 'src/app/shared/interfaces/unidad-centro';
 import { UnidadesCentroService } from 'src/app/services/unidades-centro.service';
 
@@ -59,11 +57,12 @@ export class UnidadesCentroComponent implements OnInit {
     if (RESPONSE.ok) {
       this.permises = RESPONSE.permises;
       this.unidadesService.unidadCentro = RESPONSE.data as UnidadCentro[];
-      this.displayedColumns = ['id_unidad_centro', 'unidad_centro', 'id_ciclo', 'observaciones'];
+      this.displayedColumns = ['id_unidad_centro', 'unidad_centro', 'id_ciclo', 'observaciones','actions'];
       this.dataSource.data = this.unidadesService.unidadCentro;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createFilter();
+      this.onChanges();
     }
   }
 
@@ -103,7 +102,6 @@ export class UnidadesCentroComponent implements OnInit {
       const searchTerms = JSON.parse(filter);
 
       return unidad.id_ciclo.toString().indexOf(searchTerms.id_ciclo) !== -1
-        && unidad.id_unidad_centro.toString().indexOf(searchTerms.id_unidad_centro) !== -1
         && unidad.observaciones.toLowerCase().indexOf(searchTerms.observaciones.toLowerCase()) !== -1
         && unidad.unidad_centro.toLowerCase().indexOf(searchTerms.unidad_centro.toLowerCase()) !== -1;
         // TODO Arreglar esto

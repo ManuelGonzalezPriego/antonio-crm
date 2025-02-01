@@ -24,6 +24,8 @@ export class AddFamiliaComponent implements OnInit {
   ngOnInit(): void {
     this.familiaForm = new FormGroup({
       familia: new FormControl(null, Validators.required),
+
+      //Agragamos el form control, en este caso es importante que el nombre coincidac con el de la db
       cod_familia: new FormControl(null),
       observaciones: new FormControl(null)
     });
