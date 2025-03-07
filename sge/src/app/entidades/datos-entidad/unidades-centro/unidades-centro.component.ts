@@ -13,6 +13,7 @@ import { EditUnidadComponent } from './edit-unidad-centro/edit-unidad.component'
 import { DeleteUnidadComponent } from './delete-unidad-centro/delete-unidad.component';
 import { UnidadCentro } from 'src/app/shared/interfaces/unidad-centro';
 import { UnidadesCentroService } from 'src/app/services/unidades-centro.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-unidades-centro',
@@ -33,6 +34,9 @@ export class UnidadesCentroComponent implements OnInit {
 
   permises: Permises;
 
+  selection: SelectionModel<UnidadCentro>;
+  unidadCentroInterface: UnidadCentro;
+
   displayedColumns: string[];
   private filterValues = {id_unidad_centro: '', unidad_centro: '', id_ciclo: '', observaciones: ''};
 
@@ -49,7 +53,6 @@ export class UnidadesCentroComponent implements OnInit {
     this.onChanges();
   }
 
-
   async getUnidadesCentro() {
     const RESPONSE = await this.unidadesService.get().toPromise();
     this.permises = RESPONSE.permises;
@@ -62,6 +65,9 @@ export class UnidadesCentroComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createFilter();
+
+      this.selection = new SelectionModel<UnidadCentro>(false, [this.unidadCentroInterface]);
+
       this.onChanges();
     }
   }
@@ -80,11 +86,23 @@ export class UnidadesCentroComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUnidadComponent, { data: unidad, scrollStrategy: this.overlay.scrollStrategies.noop() });
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
-      if (RESULT.ok) {
+       if (RESULT.ok) {
+        //this.entidadesService.editEntidad(RESULT.data);
+        //this.dataSource.data = this.entidadesService.entidad;
         this.ngOnInit();
       }
     }
   }
+
+  // async editUnidadCentro(unidad: UnidadCentro) {
+  //   const dialogRef = this.dialog.open(EditUnidadComponent, { data: unidad, scrollStrategy: this.overlay.scrollStrategies.noop() });
+  //   const RESULT = await dialogRef.afterClosed().toPromise();
+  //   if (RESULT) {
+  //     if (RESULT.ok) {
+  //       this.ngOnInit();
+  //     }
+  //   }
+  // }
 
   async deleteUnidadCentro(unidad: UnidadCentro) {
     const dialogRef = this.dialog.open(DeleteUnidadComponent, { data: unidad, scrollStrategy: this.overlay.scrollStrategies.noop() });

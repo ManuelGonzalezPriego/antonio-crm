@@ -1,30 +1,30 @@
 <div class="container">
-    <h3 mat-dialog-title>Editar {{ENTIDAD}}</h3>
+  <h3 mat-dialog-title>Editar {{ENTIDAD}}</h3>
+  <!-- Pestaña de Unidades-Centro -->
+  <form class="mat-dialog-content" [formGroup]="unidadForm">
 
-    <form class="mat-dialog-content" [formGroup]="unidadForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="unidad_centro" formControlName="unidad_centro" name="unidad_centro" maxlength="100" required>
+      </mat-form-field>
+    </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <input matInput placeholder="unidad_centro" formControlName="unidad_centro" name="unidad_centro" maxlength="100" required>
-        </mat-form-field>
-      </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="id_ciclo" formControlName="id_ciclo" name="id_ciclo" maxlength="100" required>
+      </mat-form-field>
+    </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <input matInput placeholder="id_ciclo" formControlName="id_ciclo" name="id_ciclo" maxlength="100" required>
-        </mat-form-field>
-      </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="observaciones" formControlName="observaciones" name="observaciones" maxlength="100" required>
+      </mat-form-field>
+    </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <input matInput placeholder="observaciones" formControlName="observaciones" name="observaciones" maxlength="100" required>
-        </mat-form-field>
-      </div>
-
-      <div mat-dialog-actions>
-        <button mat-button id="onSubmit" type="submit" [disabled]="!unidadForm.valid" (click)="confirmEdit()">Guardar</button>
-        <button mat-button id="onNoClick" (click)="onNoClick()" tabindex="-1">Cancelar</button>
-      </div>
-
-    </form>
+    <div mat-dialog-actions>
+      <button mat-button id="onSubmit" type="submit" [disabled]="!unidadForm.valid" (click)="confirmEdit()">Guardar</button>
+      <button mat-button id="onNoClick" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+    </div>
+  </form>
 </div>
+

@@ -5,7 +5,6 @@ import { EditUnidadRoutingModule } from './edit-unidad-routing.module';
 import { EditUnidadComponent } from './edit-unidad.component';
 import { CrudMaterialModule } from 'src/app/modules/crud-material/crud-material.module';
 
-
 @NgModule({
   declarations: [EditUnidadComponent],
   imports: [

@@ -14,6 +14,11 @@ const ENDPOINT = 'unidad-centro';
 export class UnidadesCentroService {
 
   unidadCentro: UnidadCentro[];
+  unidadcentro: UnidadCentro;
+
+  setUnidadCentro(unidadCentro: UnidadCentro) {
+    this.unidadcentro = unidadCentro;
+  }
 
   constructor(private http: HttpClient, private commonService: CommonService) { }
 

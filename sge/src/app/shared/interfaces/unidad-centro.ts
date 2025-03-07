@@ -3,5 +3,4 @@ export interface UnidadCentro {
 	unidad_centro: string;
 	observaciones?: any;
   id_unidad_centro?: number;
-
-  }
+}
