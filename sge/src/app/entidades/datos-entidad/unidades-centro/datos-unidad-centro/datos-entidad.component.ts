@@ -13,7 +13,7 @@ import { CLOSE } from 'src/app/shared/messages';
   templateUrl: './datos-entidad.component.html',
   styleUrls: ['./datos-entidad.component.scss']
 })
-export class EditarUnidadCentroComponent implements OnInit {
+export class DatosUnidadCentroComponent implements OnInit {
 
   @ViewChild(RouterOutlet, {static: false}) outlet: RouterOutlet;
   rutaSeleccionada: string;
@@ -25,7 +25,7 @@ export class EditarUnidadCentroComponent implements OnInit {
             @Inject(MAT_DIALOG_DATA) public editarUnidadCentro: EditarUnidadCentro,
             private unidadesCentroService: UnidadesCentroService,
             private snackBar: MatSnackBar,
-            public dialogRef: MatDialogRef<EditarUnidadCentroComponent>,
+            public dialogRef: MatDialogRef<DatosUnidadCentroComponent>,
             ) { }
 
   ngOnInit(): void {

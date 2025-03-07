@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditarUnidadCentroComponent } from './datos-entidad.component';
+import { DatosUnidadCentroComponent } from './datos-entidad.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: EditarUnidadCentroComponent,
+    component: DatosUnidadCentroComponent,
     redirectTo: 'editar-entidad-reunion'
   },
   // {

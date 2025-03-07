@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UnidadesCentroRoutingModule } from './unidades-centro-routing.module';
 import { UnidadesCentroComponent } from './unidades-centro.component';
 import { CrudMaterialModule } from '../../../modules/crud-material/crud-material.module';
+import { DatosEntidadModule } from '../datos-entidad.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CrudMaterialModule } from '../../../modules/crud-material/crud-material
   imports: [
     CommonModule,
     UnidadesCentroRoutingModule,
-    CrudMaterialModule
+    CrudMaterialModule,
+    DatosEntidadModule
   ]
 })
 export class UnidadesCentroModule { }
