@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DatosEntidadRoutingModule } from './datos-entidad-routing.module';
-import {  DatosUnidadCentroComponent } from './datos-entidad.component';
+import { DatosEntidadRoutingModule } from './datodatos-unidad-cenrtro-routing.module';
 import { CrudMaterialModule } from 'src/app/modules/crud-material/crud-material.module';
+import { DatosUnidadCentroComponent } from './datodatos-unidad-cenrtro.component';
+
 //import { CrudMaterialModule } from '../../modules/crud-material/crud-material.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { CrudMaterialModule } from 'src/app/modules/crud-material/crud-material.
     CommonModule,
     DatosEntidadRoutingModule,
     CrudMaterialModule
-  ]
+  ],
+  exports:[DatosUnidadCentroComponent]
 })
-export class DatosEntidadModule { }
+export class DatosUnidadCentroModule { }

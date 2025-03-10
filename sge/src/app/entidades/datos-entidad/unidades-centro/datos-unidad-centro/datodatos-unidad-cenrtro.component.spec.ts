@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatosUnidadCentroComponent } from './datos-entidad.component';
+import { DatosUnidadCentroComponent } from './datodatos-unidad-cenrtro.component';
 
 describe('DatosEntidadComponent', () => {
   let component: DatosUnidadCentroComponent;

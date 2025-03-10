@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UnidadesCentroRoutingModule } from './unidades-centro-routing.module';
 import { UnidadesCentroComponent } from './unidades-centro.component';
 import { CrudMaterialModule } from '../../../modules/crud-material/crud-material.module';
-import { DatosEntidadModule } from '../datos-entidad.module';
+import { DatosUnidadCentroComponent } from './datos-unidad-centro/datodatos-unidad-cenrtro.component';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { DatosEntidadModule } from '../datos-entidad.module';
     CommonModule,
     UnidadesCentroRoutingModule,
     CrudMaterialModule,
-    DatosEntidadModule
-  ]
+    DatosUnidadCentroComponent
+  ],
+  exports:[UnidadesCentroComponent]
 })
 export class UnidadesCentroModule { }

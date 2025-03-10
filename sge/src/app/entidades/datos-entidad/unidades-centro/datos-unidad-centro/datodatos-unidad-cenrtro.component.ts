@@ -10,11 +10,10 @@ import { CLOSE } from 'src/app/shared/messages';
 
 @Component({
   selector: 'app-datos-unidadcentro',
-  templateUrl: './datos-entidad.component.html',
-  styleUrls: ['./datos-entidad.component.scss']
+  templateUrl: './datodatos-unidad-cenrtro.component.html',
+  styleUrls: ['./datos-unidad-cenrtro.scss'],
 })
 export class DatosUnidadCentroComponent implements OnInit {
-
   @ViewChild(RouterOutlet, {static: false}) outlet: RouterOutlet;
   rutaSeleccionada: string;
   lastRoute = '';

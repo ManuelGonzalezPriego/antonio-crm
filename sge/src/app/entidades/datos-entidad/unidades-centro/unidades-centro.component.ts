@@ -14,7 +14,7 @@ import { DeleteUnidadComponent } from './delete-unidad-centro/delete-unidad.comp
 import { UnidadCentro } from 'src/app/shared/interfaces/unidad-centro';
 import { UnidadesCentroService } from 'src/app/services/unidades-centro.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { DatosUnidadCentroComponent } from './datos-unidad-centro/datos-entidad.component';
+import { DatosUnidadCentroComponent } from './datos-unidad-centro/datodatos-unidad-cenrtro.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
