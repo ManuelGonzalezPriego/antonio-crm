@@ -16,7 +16,6 @@ export class AddUnidadComponent implements OnInit {
   ciclos: UnidadCentro[];
 
   ENTIDAD: String;
-  esDual = true;
 
   constructor(
     public dialogRef: MatDialogRef<AddUnidadComponent>,

@@ -74,9 +74,9 @@ export class CommonService {
     const bufferArray = this.base64ToArrayBuffer(data);
     const blobStore = new Blob([bufferArray], { type: 'application/pdf' });
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveOrOpenBlob(blobStore);
-        return;
-    }
+      window.navigator.msSaveOrOpenBlob(blobStore);
+      return;
+  }
     data = window.URL.createObjectURL(blobStore);
     const link = document.createElement('a');
     document.body.appendChild(link);

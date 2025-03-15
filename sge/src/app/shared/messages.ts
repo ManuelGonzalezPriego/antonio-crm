@@ -15,4 +15,5 @@ export const ENTIDAD_FAMILIA = "Familia";
 export const ENTIDAD_UNIDAD = "Ciclo Formativo";
 export const ENTIDAD_CICLO = "Ciclo Formativo";
 export const ENTIDAD_UNIDAD_CENTRO = "Ciclo Formativo Centro";
+export const ALUMNOS_UNIDAD_CENTRO = "Alumnos Ciclo Formativo Centro";
 

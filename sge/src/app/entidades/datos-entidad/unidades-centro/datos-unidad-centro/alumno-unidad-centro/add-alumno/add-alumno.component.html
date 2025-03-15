@@ -1,0 +1,71 @@
+<div class="container">
+    <h3 mat-dialog-title>Añadir {{ENTIDAD}}</h3>
+
+    <form class="mat-dialog-content" [formGroup]="alumnoForm">
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput placeholder="Id Unidad Centro" formControlName="id_unidad_centro" name="id_unidad_centro">
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput placeholder="Nombre" formControlName="nombre" name="nombre" maxlength="100">
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput placeholder="Apellidos" formControlName="apellidos" name="apellidos" maxlength="100" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form alert alert-danger">
+            <mat-form-field color="accent">
+                <input matInput placeholder="Linkedin" formControlName="linkedin" name="linkedin">
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput placeholder="Fecha De Nacimiento" formControlName="fecha_nacimiento" name="fechaNacimiento" type="date">
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput placeholder="DNI" formControlName="id_documento" name="idDocumento" maxlength="100">
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+          <mat-label>Nivel de Inglés</mat-label>
+          <mat-select formControlName="nivel_ingles" required>
+            <mat-option value="A1">A1</mat-option>
+            <mat-option value="A2">A2</mat-option>
+            <mat-option value="B1">B1</mat-option>
+            <mat-option value="B2">B2</mat-option>
+            <mat-option value="C1">C1</mat-option>
+            <mat-option value="C2">C2</mat-option>
+          </mat-select>
+        </div>
+
+        <div class="form">
+          <mat-form-field color="accent">
+              <input matInput type="number" placeholder="Minusvalia" formControlName="minusvalia" name="minusvalia" maxlength="100">
+          </mat-form-field>
+        </div>
+
+        <div class="form">
+          <mat-form-field color="accent">
+            <input matInput placeholder="Otra Formacion" formControlName="otraFormacion" name="otraFormacion" >
+          </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions>
+          <button mat-button id="onSubmit" type="submit" [disabled]="!alumnoForm.valid" (click)="confirmAdd()">Guardar</button>
+          <button mat-button id="onNoClick" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+        </div>
+
+    </form>
+</div>

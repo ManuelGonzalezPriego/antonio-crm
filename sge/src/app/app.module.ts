@@ -12,11 +12,10 @@ import { FooterModule } from '../app/shared/footer/footer.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 
 import { DatosEntidadComponent } from './entidades/datos-entidad/datos-entidad.component'
 import { DatosReunionComponent } from './reuniones/datos-reunion/datos-reunion.component'
+import { EdadPipe } from './pipes/edad.pipe';
 
 // import { NgxLoadingXModule, POSITION, SPINNER, NgxLoadingXConfig } from 'ngx-loading-x';
 
@@ -36,7 +35,7 @@ import { DatosReunionComponent } from './reuniones/datos-reunion/datos-reunion.c
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +45,7 @@ import { DatosReunionComponent } from './reuniones/datos-reunion/datos-reunion.c
     NavbarModule,
     FooterModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    MatListModule,
-    MatSidenavModule,
-
+    MatNativeDateModule
     // NgxLoadingXModule.forRoot(ngxLoadingXConfig)
   ],
   providers: [
@@ -58,6 +54,6 @@ import { DatosReunionComponent } from './reuniones/datos-reunion/datos-reunion.c
     DatosEntidadComponent,
     DatosReunionComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

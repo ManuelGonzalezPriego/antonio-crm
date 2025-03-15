@@ -31,23 +31,29 @@ export class EditUnidadComponent implements OnInit {
 
   ENTIDAD: String;
   esDual = true;
-
-
+  unidad:UnidadCentro;
   constructor(
     public dialogRef: MatDialogRef<EditUnidadComponent>,
     private snackBar: MatSnackBar,
     private servicioUnidades: UnidadesCentroService,
-    @Inject(MAT_DIALOG_DATA) public unidad: UnidadCentro,
-
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data,
+  ) { this.unidad=data.unidad_centro }
 
   ngOnInit(): void {
     this.setForm();
-    //this.setFilter();
+
+    // this.datosBasicosForm.valueChanges.subscribe(form => {
+    //   this.entidadService.setDatosBasicosEntidad(form);
+    // });
+
+    this.unidadForm.valueChanges.subscribe(form => {
+      this.servicioUnidades.setUnidadCentro(form);
+    });
   }
 
   setForm() {
     this.ENTIDAD = ENTIDAD_UNIDAD;
+
     this.unidadForm = new FormGroup({
       unidad_centro: new FormControl(this.unidad.unidad_centro),
       id_ciclo: new FormControl(this.unidad.id_ciclo, Validators.required),
@@ -57,7 +63,6 @@ export class EditUnidadComponent implements OnInit {
   }
 
   async confirmEdit(){
-    console.log(this.unidad);
     if (this.unidadForm.valid) {
       const unidadForm = this.unidadForm.value;
 

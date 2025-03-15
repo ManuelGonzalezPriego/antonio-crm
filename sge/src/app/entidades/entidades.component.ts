@@ -97,7 +97,7 @@ export class EntidadesComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createFilter();
       this.selection = new SelectionModel<Entidad>(false, [this.entidad]);
-
+      console.log(this.selection)
       this.onChanges();
     }
   }

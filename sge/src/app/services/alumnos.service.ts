@@ -1,46 +1,47 @@
 import { Injectable } from '@angular/core';
-import { UnidadCentro } from '../shared/interfaces/unidad-centro';
+import { Contacto } from '../shared/interfaces/contacto';
 import { ApiResponse } from '../shared/interfaces/api-response';
 import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../shared/common.service';
 import { URL_API } from 'src/environments/environment';
+import { Alumno } from '../shared/interfaces/alumno';
 
-const ENDPOINT = 'unidad-centro';
-
+const ENDPOINT = 'alumno';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UnidadesCentroService {
+export class AlumnosService {
 
-  unidadCentro: UnidadCentro[];
-  unidadcentro: UnidadCentro;
-
-  setUnidadCentro(unidadCentro: UnidadCentro) {
-    this.unidadcentro=unidadCentro;
-  }
+  alumno: Alumno[];
 
   constructor(private http: HttpClient, private commonService: CommonService) { }
-
+/*
   get() {
     return this.http.get<ApiResponse>(`${URL_API}/${ENDPOINT}.php`, { headers: this.commonService.headers });
   }
+*/
+  getAlumnosIdCentro(idAlumnoCentro: number) {
+    return this.http.get<ApiResponse>(`${URL_API}/${ENDPOINT}.php?unidadCentro=${idAlumnoCentro}`, { headers: this.commonService.headers });
+  }
 
-  getAllUnidadesCentro() {
+  getAllAlumnos() {
     return this.http.get<ApiResponse>(`${URL_API}/${ENDPOINT}.php`, { headers: this.commonService.headers });
   }
 
-  addUnidadCentro(unidad: UnidadCentro) {
-    const body = JSON.stringify(unidad);
+  addAlumno(alumno: Alumno) {
+    const body = JSON.stringify(alumno);
     return this.http.post<ApiResponse>(`${URL_API}/${ENDPOINT}.php`, body, { headers: this.commonService.headers });
   }
 
-  editUnidadCentro(unidad: UnidadCentro) {
-    const body = JSON.stringify(unidad);
+  editAlumno(alumno: Alumno) {
+    const body = JSON.stringify(alumno);
     return this.http.put<ApiResponse>(`${URL_API}/${ENDPOINT}.php`, body, { headers: this.commonService.headers });
   }
 
-  deleteUnidadCentro(id: number|string) {
+  deleteAlumno(id: number|string) {
     return this.http.delete<ApiResponse>(`${URL_API}/${ENDPOINT}.php?id=${id}`, {headers: this.commonService.headers });
   }
+
+
 }

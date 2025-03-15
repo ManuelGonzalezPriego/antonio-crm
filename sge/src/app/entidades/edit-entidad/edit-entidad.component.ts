@@ -40,7 +40,7 @@ export class EditEntidadComponent implements OnInit {
     private servicioTipoEntidad: TiposEntidadService,
     private servicioContactos: ContactosService,
 
-  ) { }
+  ) {  }
 
   ngOnInit(): void {
     this.ENTIDAD = ENTIDAD_ENTIDAD;
@@ -107,7 +107,7 @@ export class EditEntidadComponent implements OnInit {
       this.contactos = RESPONSE.data as Contacto[];
     }
   }
-  
+
   onNoClick() {
     this.dialogRef.close({ ok: false });
   }
